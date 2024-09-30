@@ -5,3 +5,10 @@ It:
   - exchanges the code for an access token
   - prints the access token
   - decodes the access token
+
+How to run:
+# build the image
+sudo docker build -t <IMAGE-NAME> .
+
+# creare and run container
+sudo docker run -it --rm -p <PORT>:<PORT> --add-host <HOSTNAME>:<IP> --name <CONTAINER-NAME> <IMAGE-NAME>
