@@ -27,4 +27,5 @@ ENV REALM_NAME=${REALM_NAME}
 ENV APP_URL=${APP_URL}
 
 # start server
-CMD ["python3", "-m", "streamlit", "run", "/app/app.py", "--server.port", "5544"]
+#CMD ["python3", "-m", "streamlit", "run", "/app/app.py", "--server.port", "$PORT"]
+CMD python3 -m streamlit run /app/app.py --server.port ${PORT}
