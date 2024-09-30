@@ -3,10 +3,10 @@ FROM python:3
 # set working directory
 WORKDIR /app
 
+# copy files to workdir
 COPY . /app
 
-
-#
+# server and app configuration variables
 ARG PORT=5544
 ARG BASE_URL=https://keycloakentra:8443
 ARG CLIENT_ID=mycooldockerapp
