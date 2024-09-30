@@ -8,7 +8,7 @@ It:
 
 # How to run:
 build the image (go to the directory where the dockerfile is located):     
-  sudo docker build -t <IMAGE-NAME> .
+  sudo docker build -t IMAGE-NAME .
 
 create and run container:     
-  sudo docker run -it --rm -p <PORT>:<PORT> --add-host <HOSTNAME>:<IP> --name <CONTAINER-NAME> <IMAGE-NAME>
+  sudo docker run -it --rm -p PORT:PORT --add-host HOSTNAME:IP --name CONTAINER-NAME IMAGE-NAME
