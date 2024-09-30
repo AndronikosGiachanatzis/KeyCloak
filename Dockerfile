@@ -5,21 +5,26 @@ WORKDIR /app
 
 COPY . /app
 
-# add DNS entry for keycloak
-#RUN echo "10.2.7.4 keycloakentra" >> /etc/hosts
+
+#
+ARG PORT=5544
+ARG BASE_URL=https://keycloakentra:8443
+ARG CLIENT_ID=mycooldockerapp
+ARG REALM_NAME=TestRealm
+ARG APP_URL=http://10.2.4.5:${PORT}
 
 # expose port
-EXPOSE 5544
+EXPOSE ${PORT}
 
 # install requirements
 RUN pip3 install -r requirements.txt
 
 # set environment variables
-ENV PORT=5544
-ENV BASE_URL=https://keycloakentra:8443
-ENV CLIENT_ID=mycooldockerapp
-ENV REALM_NAME=TestRealm
-ENV APP_URL=http://10.2.4.5:5544
+ENV PORT=${PORT}
+ENV BASE_URL=${BASE_URL}
+ENV CLIENT_ID=${CLIENT_ID}
+ENV REALM_NAME=${REALM_NAME}
+ENV APP_URL=${APP_URL}
 
 # start server
 CMD ["python3", "-m", "streamlit", "run", "/app/app.py", "--server.port", "5544"]
