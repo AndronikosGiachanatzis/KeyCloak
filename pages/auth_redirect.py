@@ -2,6 +2,7 @@ import streamlit as st
 import requests
 import sys
 from base64 import b64decode
+from base64 import urlsafe_b64decode
 import jwt
 import json
 
@@ -19,6 +20,17 @@ def DecodeToken(token, token_type='access'):
     else:
         payload = jwt.decode(token, sign_key.key, algorithms=["RS256"], audience=CLIENT_ID)
     return payload
+
+def DecodeTokenOffline(token, token_type='access'):
+    #print(type(token))
+    parts = token.split(".")
+    #print(parts[1])
+    
+    decodedBytes=urlsafe_b64decode(parts[1] + '=='*(-len(parts[1])%4))
+    decodedString=str(decodedBytes, "utf-8")
+    return decodedString
+    
+
 
 # endpoint to fetch the public key
 CERT_URL = f"{BASE_URL}/realms/{REALM}/protocol/openid-connect/certs"
@@ -48,18 +60,19 @@ st.write(resp.json())
 
 try:
     access_token = resp.json()['access_token']
-    print(access_token)
+   # print(access_token)
 except:
     pass
 
-payload = DecodeToken(access_token)
-print(json.dumps(payload, indent=4))
+payload = DecodeTokenOffline(access_token)
+#print(json.dumps(payload, indent=4))
 
 
 st.subheader("Decoded Access Token", divider='gray')
-st.write(payload)
+st.write(json.loads(payload))
 
 st.subheader("Decoded ID Token", divider='gray')
 id_token = resp.json()['id_token']
-payload = DecodeToken(id_token, token_type='id')
-st.write(payload)
+payload = DecodeTokenOffline(id_token, token_type='id')
+st.write(json.loads(payload))
+
