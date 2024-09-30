@@ -6,9 +6,9 @@ It:
   - prints the access token
   - decodes the access token
 
-How to run:
-# build the image
-sudo docker build -t <IMAGE-NAME> .
+# How to run:
+build the image (go to the directory where the dockerfile is located)
+  sudo docker build -t <IMAGE-NAME> .
 
-# creare and run container
-sudo docker run -it --rm -p <PORT>:<PORT> --add-host <HOSTNAME>:<IP> --name <CONTAINER-NAME> <IMAGE-NAME>
+create and run container
+  sudo docker run -it --rm -p <PORT>:<PORT> --add-host <HOSTNAME>:<IP> --name <CONTAINER-NAME> <IMAGE-NAME>
