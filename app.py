@@ -1,9 +1,13 @@
 import streamlit as st
+import os
 
-CLIENT_ID = 'mycoolapp'
-REALM = 'TestRealm'
-BASE_URL = 'https://keycloakentra:8443'
-APP_URL = 'http://10.2.4.5:3333'
+CLIENT_ID = os.environ['CLIENT_ID']
+REALM = os.environ['REALM_NAME']
+BASE_URL = os.environ['BASE_URL']
+APP_URL = os.environ['APP_URL']
+
+
+print(f"KeyCloak: {BASE_URL}\nRealm:{REALM}\nCLIENT_ID:{CLIENT_ID}")
 
 url = f"{BASE_URL}/realms/{REALM}/protocol/openid-connect/auth?"
 url += "scope=openid&"
