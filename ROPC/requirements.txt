@@ -1,0 +1,7 @@
+streamlit
+pyjwt
+requests
+#json
+#base64
+#os
+#sys
