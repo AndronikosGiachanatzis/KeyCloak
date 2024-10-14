@@ -1,0 +1,8 @@
+streamlit
+pyjwt
+requests
+streamlit_url_fragment
+#json
+#base64
+#os
+#sys
