@@ -2,7 +2,7 @@ import streamlit as st
 
 TENANT = os.environ['TENANT']
 CLIENT_ID = os.environ['CLIENT_ID']
-BASE_URL = "https://login.microsoftonline.com"
+BASE_URL = os.environ['BASE_URL']
 APP_URL = os.environ['APP_URL']
 SCOPE = f"openid email profile api://{CLIENT_ID}/user_impersonation"
 RESPONSE_TYPE="id_token token"
